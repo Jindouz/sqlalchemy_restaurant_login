@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2>Recipes</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Ingredients</th>
+                <th>Prep Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for recipe in recipes %}
+                <tr>
+                    <td>{{ recipe.id }}</td>
+                    <td>{{ recipe.name }}</td>
+                    <td>{{ recipe.ingredients }}</td>
+                    <td>{{ recipe.prep_time }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_recipe', id=recipe.id) }}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="{{ url_for('delete_recipe', id=recipe.id) }}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
